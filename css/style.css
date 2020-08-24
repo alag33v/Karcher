@@ -44,10 +44,12 @@ body {
   width: 170px;
   border-radius: 25px;
   height: 50px;
+  outline: none;
   transition: all 0.3s;
 }
 
-.btn:hover {
+.btn:hover,
+.btn:focus {
   background-color: #ffda0a;
 }
 
@@ -76,6 +78,7 @@ body {
 
 .menu__list {
   display: flex;
+  padding-left: 0;
 }
 
 .menu__item {
@@ -180,6 +183,129 @@ body {
 }
 .header__arrow-image {
   display: inline-block;
+}
+
+/* Burger menu */
+
+.burger__button-wrapper {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 10px;
+  border: 2px solid #eebd0d;
+  border-radius: 50%;
+  display: none;
+  margin-top: -10px;
+  z-index: 5;
+}
+
+.burger__button {
+  width: 25px;
+  height: 2px;
+  background-color: #000;
+  position: relative;
+  z-index: 5;
+}
+
+.burger__button::before {
+  content: '';
+  width: 25px;
+  height: 2px;
+  top: -7px;
+  left: 0;
+  background-color: #000;
+  display: block;
+  position: absolute;
+  transition: transform 0.2s linear, top 0.2s linear 0.2s;
+}
+
+.burger__button::after {
+  content: '';
+  width: 25px;
+  height: 2px;
+  top: 7px;
+  left: 0;
+  background-color: #000;
+  display: block;
+  position: absolute;
+  transition: transform 0.2s linear, top 0.2s linear 0.2s;
+}
+
+/* Burger turn to X */
+
+.burger__button.active {
+  background-color: transparent;
+}
+
+.burger__button.active::before {
+  transform: rotate(45deg);
+  top: 0;
+  transition: top 0.2s linear, transform 0.2s linear 0.2s;
+  background-color: #fff;
+}
+
+.burger__button.active::after {
+  transform: rotate(-45deg);
+  top: 0;
+  transition: top 0.2s linear, transform 0.2s linear 0.2s;
+  background-color: #fff;
+}
+
+/* Mobile navigation */
+
+.menu__mobile-nav {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -70%;
+  width: 70%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1;
+  padding-top: 80px;
+  overflow: hidden;
+  transition: 0.6s;
+}
+
+.menu__mobile-nav--active {
+  transform: translateX(-100%);
+}
+
+.mobile-nav__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.mobile-nav__item {
+  list-style: none;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #424245;
+  padding-bottom: 5px;
+  width: 100%;
+}
+
+.mobile-nav__item:last-child {
+  margin-bottom: 100vh;
+  border-bottom: none;
+}
+
+.mobile-nav__link {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: 0.3s;
+  margin-bottom: 40px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
 }
 
 /* Description */
@@ -380,6 +506,7 @@ body {
 
 .footer__wrapper {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 100px 0 30px;
