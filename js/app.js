@@ -71,4 +71,30 @@ $(document).ready(function () {
       body.classList.remove('block');
     });
   }
+  // Pop-up
+  let formBtn = document.querySelector('.form__btn');
+  let popUp = document.querySelector('.popup');
+  let closePopup = document.querySelector('.popup__close');
+
+  formBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    popUp.classList.add('popup--active');
+  });
+
+  document.addEventListener('mouseup', (e) => {
+    if (e.target.closest('.popup') === null) {
+      popUp.classList.remove('popup--active');
+    }
+  });
+
+  closePopup.addEventListener('click', (e) => {
+    e.preventDefault();
+    popUp.classList.remove('popup--active');
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.keyCode == 27) {
+      popUp.classList.remove('popup--active');
+    }
+  });
 });
